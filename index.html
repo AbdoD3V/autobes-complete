@@ -1,11 +1,89 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>أتوبيس كومبليت</title>
+    <link rel="stylesheet" href="css/index.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&family=Noto+Naskh+Arabic:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    
+    <canvas id="bg-canvas" class="bg-canvas"></canvas>
+
+    <main class="container">
+        <header class="header">
+            <div class="header-top">
+                <img src="assets/autobus_complete.png" alt="أتوبيس كومبليت" class="logo">
+                <div>
+                    <h1 class="title">أتوبيس كومبليت</h1>
+                    <p class="subtitle">اللعبة بالعربية — الوضع الإنجليزي قادم قريبًا</p>
+                </div>
+            </div>
+        </header>
+
+        <section class="lobby">
+            <div class="form-row">
+                <label>اختر اسمك:</label>
+                <input id="player-name" placeholder="اسمك" autofocus>
+            </div>
+            <div class="form-row">
+                <button id="create-room">إنشاء غرفة</button>
+                <button id="join-room">الانضمام لغرفة</button>
+            </div>
+
+            <div id="room-creator" class="room-panel hidden">
+                <label>كلمة سر (اختياري):</label>
+                <input id="room-password" placeholder="كلمة سر">
+                <button id="finish-create">انشاء</button>
+            </div>
+
+            <div id="room-join" class="room-panel hidden">
+                <label>رمز الغرفة:</label>
+                <input id="join-room-id" placeholder="رمز الغرفة">
+                <label>كلمة سر (إن وجدت):</label>
+                <input id="join-password" placeholder="كلمة سر">
+                <button id="finish-join">انضم</button>
+            </div>
+
+            <div id="lobby-info" class="hidden">
+                <p id="room-id-display"></p>
+                <div id="players-list"></div>
+                <div class="lobby-actions">
+                    <label><input type="checkbox" id="require-password"> تتطلب كلمة سر للانضمام</label>
+                    <button id="start-game">بدء اللعبة (صاحب الغرفة فقط)</button>
+                </div>
+            </div>
+        </section>
+
+        <section id="game" class="game hidden">
+            <div class="game-header">
+                <div id="round-info"></div>
+                <div id="timer">03:00</div>
+            </div>
+
+            <div id="letter-card" class="letter-card">حرف</div>
+
+            <form id="answers-form" class="answers-form">
+                <label>اسم ولد</label>
+                <input name="boy" required>
+                <label>اسم بنت</label>
+                <input name="girl" required>
+                <label>نبتة</label>
+                <input name="plant" required>
+                <label>شيء صلب</label>
+                <input name="solid" required>
+                <label>بلد/مدينة</label>
+                <input name="place" required>
+                <button id="submit-answers" type="submit">إرسال الإجابات</button>
+            </form>
+
+            <div id="round-results" class="hidden"></div>
+        </section>
+
+        <footer class="footer">ستدقق الإجابات بواسطة AI من Hugging Face — افتح إعدادات Netlify مع متغير `HF_API_KEY`.</footer>
+    </main>
+
+    <script src="https://unpkg.com/three@0.152.2/build/three.min.js"></script>
+    <script src="main.js" type="module"></script>
 </body>
 </html>
